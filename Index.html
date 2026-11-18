@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KCB 2Jiajiri Graduation 2026 · Commemorative Booklet</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 24px 12px 60px;
+    background: #e9edf1;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  .booklet {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .booklet-page {
+    margin: 0 0 22px;
+    background: #fff;
+    box-shadow: 0 8px 26px rgba(10, 43, 66, .14);
+    border-radius: 8px;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .booklet-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .booklet-page img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  noscript {
+    display: block;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 16px;
+    background: #fff;
+    border-left: 4px solid #e9bc45;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 12px 6px 40px; }
+    .booklet-page { border-radius: 0; margin-bottom: 12px; }
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .booklet { max-width: none; }
+    .booklet-page {
+      margin: 0;
+      box-shadow: none;
+      border-radius: 0;
+      page-break-after: always;
+      break-after: page;
+    }
+  }
+</style>
+</head>
+<body>
+
+<noscript>
+  Enable JavaScript to view the 41-page booklet, or open the original PDF directly.
+</noscript>
+
+<main class="booklet" id="booklet"></main>
+
+<script>
+  const TOTAL_PAGES = 41;
+  const ext = "jpg"; // change to "png" if your images are .png
+  const container = document.getElementById("booklet");
+
+  for (let i = 1; i <= TOTAL_PAGES; i++) {
+    const num = String(i).padStart(2, "0");
+
+    const figure = document.createElement("figure");
+    figure.className = "booklet-page";
+
+    const img = document.createElement("img");
+    img.src = `images/page-${num}.${ext}`;
+    img.alt = `Page ${i} of ${TOTAL_PAGES} — KCB 2Jiajiri Graduation 2026 Booklet`;
+    img.decoding = "async";
+    img.loading = i === 1 ? "eager" : "lazy";
+
+    figure.appendChild(img);
+    container.appendChild(figure);
+  }
+</script>
+
+</body>
+</html>
